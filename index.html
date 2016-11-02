@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>性能分析</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/index.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<p>性能分析<strong>指标提取</strong></p>
+			<p>
+				<span>选择条件</span>查询结果
+			</p>
+		</div>
+		<div class="nav" id="nav">
+			<ul>
+				<li class="cur"><a href="javascript:void(0);">时间</a><span></span></li>
+				<li><a href="javascript:void(0);">网元</a><span></span></li>
+				<li><a href="javascript:void(0);">指标</a><span></span></li>
+				<li><a href="javascript:void(0);">过滤</a><span></span></li>
+			</ul>
+		</div>
+		<div class="list">
+			<dl id="time">
+				<dt><img src="images/b1.png"alt="">时间</dt>
+				<dd>时间粒度:<span>天</span></dd>
+				<dd>时间:<span>2014/08/14</span></dd>
+				<dd>时段:<span>全天<span></dd>
+			</dl>
+			<dl id="net">
+				<dt><img src="images/b2.png" alt="">网元</dt>
+				<dd>呈现方式:<span>网络拓扑</span></dd>
+				<dd>聚合粒度:<span>小区</span></dd>
+				<dd>选择范围:<div id="close"><p>[GZ4792]F金田花园东-2<span>X</span></p><p>[GZ4792]F金田花园东-1<span>X</span></p></div>
+				</dd>
+			</dl>
+			<dl>
+				<dt><img src="images/b3.png" alt="">指标</dt>
+				<dd><input type="text" placeholder="平均用户数"></dd>
+				<dd><input type="text" placeholder="平均用户数"></dd>
+			</dl>
+		</div>
+		<div class="big">
+			<!-- 时间区域 -->
+			<div class="content show">
+				<div class="listContent">
+					<div class="day" id="day">
+						<h4>时间</h4>
+						<ul>
+							<li class="show">天</li>
+							<li>周</li>
+							<li>月</li>
+						</ul><br>
+						<ul class="index">
+							<li>离散</li>
+							<li class="show">连续</li>	
+						</ul>
+						<form><input type="text" value="4"><button>天</button></form><br><br>
+						<p>时间:<span>2014/08/14</span>&nbsp;&nbsp;<span>连续4天</span></p>
+						<!-- 日历区域 -->
+						<div class="calendar" id="calendar"></div>
+						<script src="js/date.js"></script>
+					</div>
+					<div class="time">
+						<h4>时段</h4>
+						<form action="">
+							<label for="">天:</label>
+							<input type="radio" name="timing" value="全天" checked>全天:<br>
+							<label for="">忙时:</label>
+							<select name="" id="">
+								<option value="流量忙时(TDD+FDE)">流量忙时(TDD+FDE)</option>
+								<option value="流量">流量</option>
+							</select>
+							<input type="radio" name="timing" value="省忙时">省忙时
+							<input type="radio" name="timing" value="地市忙时">地市忙时
+							<input type="radio" name="timing" value="网元忙时">网元忙时<br>
+							<label for="">任意小时:</label><span>未选择</span>
+						</form>
+						<table>
+							<tr>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+								<td>5</td>
+								<td>6</td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td>8</td>
+								<td>9</td>
+								<td>10</td>
+								<td>11</td>
+								<td>12</td>
+							</tr>
+							<tr>
+								<td>13</td>
+								<td>14</td>
+								<td>15</td>
+								<td>16</td>
+								<td>17</td>
+								<td>17</td>
+							</tr>
+							<tr>
+								<td>18</td>
+								<td>19</td>
+								<td>20</td>
+								<td>21</td>
+								<td>22</td>
+								<td>23</td>
+							</tr>
+						</table>
+						<input type="checkbox">全选
+					</div>		
+				</div>
+			</div>
+			<!-- 网元区域 -->
+			<div class="content">
+				<div class="listContent" id="listContent">
+					<dl style="background:#fafbfd;border:1px solid #dadbdd;border-bottom:none;">
+						<dt>呈现方式:</dt>
+						<dd><input type="radio" name="way" value="网络拓扑" checked>网络拓扑<input type="radio" name="way" value="网元组">网元组</dd>
+						<dd><input type="text"><button>搜索</button>共14376个</dd>
+					</dl>
+					<dl style="background:#fafbfd;border:1px solid #dadbdd;border-bottom:none;">
+						<dt>聚合粒度:</dt>
+						<dd>
+							<input type="radio" name="area" value="小区" checked>小区
+						</dd>
+						<dd>
+							<input type="radio" name="area" value="基站">基站
+						</dd>
+						<dd>
+							<input type="radio" name="area" value="网络">网络
+						</dd>
+						<dd>
+							<input type="radio" name="area" value="片区">片区
+						</dd>
+						<dd>
+							<input type="radio" name="area" value="地市">地市
+						</dd>
+						<dd>
+							<input type="radio" name="area" value="省">省
+						</dd>
+					</dl>
+					<dl style="background:#fafbfd;border:1px solid #dadbdd;border-bottom:none;">
+						<dt>选择范围:</dt>
+						<dd>
+							<input type="radio" name="choose" checked>小区
+						</dd>
+						<dd>
+							<input type="radio" name="choose">基站
+						</dd>
+						<dd>
+							<input type="radio" name="choose">网络
+						</dd>
+						<dd>
+							<input type="radio" name="choose">片区
+						</dd>
+						<dd>
+							<input type="radio" name="choose">地市
+						</dd>
+						<dd>
+							<input type="radio" name="choose">省
+						</dd>
+					</dl>
+					<div class="nav_area" id="area">
+						<dl>
+							<dt><img src="images/sub.png" alt=""><input type="radio" name="Bcity" checked><a href="">广东</a></dt>
+							<dd><input type="radio" name="city" checked><a href="javascript:void(0);">广州</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">深圳</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">东莞</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">佛山</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">中山</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">惠州</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">江门</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">珠海</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">汕头</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">揭阳</a></dd>
+							<dd><input type="radio" name="city"><a href="javascript:void(0);">潮州</a></dd>
+						</dl>
+					</div>
+					<div class="view" id="view">
+						<span></span>
+						<div class="view_top">						
+							<ul>
+								<li><input type="checkbox">GZ4844</li>
+								<li><input type="checkbox">GZ4842</li>
+								<li><input type="checkbox">GZ4826</li>
+								<li><input type="checkbox">GZ4813</li>
+								<li><input type="checkbox">GZ4838</li>
+								<li><input type="checkbox">GZ4810</li>
+								<li><input type="checkbox">GZ4803</li>
+								<li><input type="checkbox">GZ4842</li>
+								<li><input type="checkbox">GZ4846</li>
+								<li><input type="checkbox">GZ4825</li>
+								<li><input type="checkbox">GZ484</li>
+								<li><input type="checkbox">GZ4</li>
+								<li><input type="checkbox">GZ4844</li>
+								<li><input type="checkbox">GZ4842</li>
+								<li><input type="checkbox">GZ4826</li>
+								<li><input type="checkbox">GZ4813</li>
+								<li><input type="checkbox">GZ4838</li>
+								<li><input type="checkbox">GZ4810</li>
+								<li><input type="checkbox">GZ4803</li>
+								<li><input type="checkbox">GZ4842</li>
+								<li><input type="checkbox">GZ4846</li>
+								<li><input type="checkbox">GZ4825</li>
+								<li><input type="checkbox">GZ484</li>
+								<li><input type="checkbox">GZ4</li>
+							</ul>
+						</div>
+						<span></span>
+						<div class="view_down">
+							<ul id="choose">
+								<li><input type="checkbox" value="[GZ4792]F金田花园东-2">[GZ4792]F金田花园东-2</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-1</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-0</li>
+								<li><input type="checkbox">[GZ4792]金蕙大厦-0</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-2</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-1</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-0</li>
+								<li><input type="checkbox">[GZ4792]金蕙大厦-0</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-2</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-1</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-0</li>
+								<li><input type="checkbox">[GZ4792]金蕙大厦-0</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-2</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-1</li>
+								<li><input type="checkbox">[GZ4792]F金田花园东-0</li>
+								<li><input type="checkbox">[GZ4792]金蕙大厦-0</li>
+							</ul>
+							<div class="down" id="down">
+								<form action="">
+									<input type="checkbox" id="all">全选
+								</form>
+								<p><a href="javascript:void(0);" id="clear">清除选择</a><a href="javascript:void(0);">更多选项</a></p>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- 指标区域 -->
+			<div class="content">
+				<div class="netContent">
+					<form action="" class="netNav">
+						<input type="radio" name="dir" checked>指标模板
+						<input type="radio" name="dir">常用指标
+						<input type="radio" name="dir">全部指标
+						<input type="text"><button>搜索</button>
+					</form>
+					<div class="listContent">
+						<dl>
+							<dt>来源:</dt>
+							<dd>
+								<input type="checkbox" name="power" checked>性能
+							</dd>
+							<dd>
+								<input type="checkbox" name="power">话单
+							</dd>
+						</dl>
+						<dl>
+							<dt>制式:</dt>
+							<dd><input type="checkbox" name="lawer" checked>TDD+FDD</dd>
+							<dd><input type="checkbox" name="lawer">TDD</dd>
+							<dd><input type="checkbox" name="lawer">FDD</dd>
+						</dl>
+						<dl>
+							<dt>规范:</dt>
+							<dd><input type="checkbox" name="factory" checked>集团</dd>
+							<dd><input type="checkbox" name="factory">省公司</dd>
+						</dl>
+						<dl>
+							<dt>类别:</dt>
+							<dd><input type="checkbox" name="kind" checked>资源负荷类指标</dd>
+							<dd><input type="checkbox" name="kind">呼叫接入类指标</dd>
+							<dd><input type="checkbox" name="kind">呼叫保持类指标</dd>
+							<dd><input type="checkbox" name="kind">移动性管理类指标</dd>
+							<dd><input type="checkbox" name="kind">业务流量类指标</dd>
+							<dd><input type="checkbox" name="kind">业务完整类指标</dd>
+							<dd><input type="checkbox" name="kind">设备可用性指标</dd>
+						</dl>
+						<div class="view_down" id="tView">
+							<ul id="target">
+								<li><input type="checkbox">平均激活用户数</li>
+								<li><input type="checkbox">平均用户数</li>
+								<li><input type="checkbox">PDCP层下行流量</li>
+								<li><input type="checkbox">PDCP层下行流量</li>
+								<li><input type="checkbox">PDCP层总流量</li>
+								<li><input type="checkbox">同频切换成功次数</li>
+								<li><input type="checkbox">同频切换请求次数</li>
+								<li><input type="checkbox">同频切换成功率</li>
+								<li><input type="checkbox">异频切换成功次数</li>
+								<li><input type="checkbox">异频切换请求次数</li>
+								<li><input type="checkbox">异频切换成功率</li>
+								<li><input type="checkbox">RRC连接成功次数</li>
+								<li><input type="checkbox">RRC连接建立次数</li>
+								<li><input type="checkbox">RRCl连接成功率</li>
+								<li><input type="checkbox">E-RAB建立成功次数</li>
+								<li><input type="checkbox">E-RAB建立成功率</li>
+								<li><input type="checkbox">E-RAB异常释放率</li>
+								<li><input type="checkbox">E-RAB掉线率</li>
+								<li><input type="checkbox">E-RAB释放次数</li>
+								<li><input type="checkbox">CQI0上报次数</li>
+								<li><input type="checkbox">CQI1上报次数</li>
+								<li><input type="checkbox">CQI2上报次数</li>
+								<li><input type="checkbox">CQI3上报次数</li>
+								<li><input type="checkbox">CQI4上报次数</li>
+								<li><input type="checkbox">CQI5上报次数</li>
+								<li><input type="checkbox">CQI6上报次数</li>
+								<li><input type="checkbox">CQI7上报次数</li>
+								<li><input type="checkbox">CQI8上报次数</li>
+								<li><input type="checkbox">CQI9上报次数</li>
+							</ul>
+							<div class="down">
+								<form action="">
+									<input type="checkbox" id="tAll">全选
+								</form>
+								<p><a href="javascript:void(0);" id="tClear">清除选择</a><a href="">更多选项</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 过滤区域 -->
+			<div class="content">
+				<div class="listContent">
+					<div class="filter">
+						<h4>过滤排序</h4>
+						<div class="see">
+							<h4>输出字段预览</h4>
+							<table>
+								<tr>
+									<th>序号</th>
+									<th>字段</th>
+									<th>排序规则</th>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>地区名称</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>片区名称</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>县市名称</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>基站编号</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>基站名称</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>5.9.物理层上行平均吞吐量</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>7</td>
+									<td>5.10.物理层下行平均吞吐量</td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+						<div class="set">
+							<h4>查询过滤设置</h4>
+							<div class="setbtn">
+								<a href="javascript:void(0);" id="add">添加</a>
+								<a href="javascript:void(0);">(....)</a>
+								<a href="javascript:void(0);">AND</a>
+								<a href="javascript:void(0);">OR</a>
+								<a href="javascript:void(0);" id="up">上移</a>
+								<a href="javascript:void(0);" id="sub">下移</a>
+								<a href="javascript:void(0);" id="reset">清空</a>
+							</div>
+							<table id="table">
+								<tr>
+									<th><input type="radio" name="choose"></th>
+									<th>表达式(字段名+操作符+字段值)</th>
+									<th>操作</th>
+								</tr>
+								<tr>
+									<td><input type="radio" name="choose"></td>
+									<td>{</td>
+									<td><a href="javascript:void(0);"><img src="images/cross.png" alt=""></a></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="choose"></td>
+									<td>
+										<input type="text" value="地市名称">
+										<select name="" id="">
+											<option value="等于" checked>等于</option>
+											<option value="小于">小于</option>
+											<option value="大于">大于</option>
+										</select>
+										<input type="text">
+									</td>
+									<td><a href="javascript:void(0);"><img src="images/cross.png" alt=""></a></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="choose" checked></td>
+									<td>{</td>
+									<td><a href="javascript:void(0);"><img src="images/cross.png" alt=""></a></td>
+								</tr>
+							</table>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 底部提交按钮 -->
+		<div class="btns">
+			<div class="cbtn">
+				<a href="">查询</a>
+				<a href="">选择模板</a>
+				<a href="">保存模板</a>
+				<a href="">导出</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
